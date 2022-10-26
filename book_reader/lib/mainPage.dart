@@ -68,7 +68,7 @@ class MyHomePageState extends State<MyHomePage> {
                     Positioned(
                         child: Divider(
                           color: Colors.red,
-                          thickness: 1.0,
+                          thickness: 2,
                         ),
                         height: 1,
                         width: changePercentSizeToPixel(context, 90, true),
@@ -79,7 +79,7 @@ class MyHomePageState extends State<MyHomePage> {
                     Positioned(
                         child: Divider(
                           color: Colors.red,
-                          thickness: 1.0,
+                          thickness: 2,
                         ),
                         height: 1,
                         width: changePercentSizeToPixel(context, 90, true),
@@ -90,7 +90,7 @@ class MyHomePageState extends State<MyHomePage> {
                     Positioned(
                         child: VerticalDivider(
                           color: Colors.red,
-                          thickness: 1.0,
+                          thickness: 2,
                         ),
                         width: 1,
                         height: changePercentSizeToPixel(context, 80, false),
@@ -101,7 +101,7 @@ class MyHomePageState extends State<MyHomePage> {
                     Positioned(
                         child: VerticalDivider(
                           color: Colors.red,
-                          thickness: 1.0,
+                          thickness: 2,
                         ),
                         width: 1,
                         height: changePercentSizeToPixel(context, 80, false),
