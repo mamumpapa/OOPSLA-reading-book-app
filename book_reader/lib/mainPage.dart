@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 import 'package:path/path.dart' as p;
 import 'main.dart';
+import 'pixelSizeFunc.dart';
 
 class MyHomePageState extends State<MyHomePage> {
   late CameraController _cameraController;
@@ -31,15 +32,13 @@ class MyHomePageState extends State<MyHomePage> {
       print("not found any cameras");
       return;
     }
-
+    // 후면 카메라 탐색
     for (var camera in cameras) {
-      // 후면 카메라 탐색
       if (camera.lensDirection == CameraLensDirection.back) {
         back_camera = camera;
         break;
       }
     }
-
     // 카메라 컨트롤러 초기화
     _cameraController = CameraController(back_camera, ResolutionPreset.max);
     _cameraController.initialize().then((value) {
@@ -52,13 +51,72 @@ class MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-          child: _cameraInitialized ?
-          Container(child:CameraPreview(_cameraController,), width: double.infinity, height: double.infinity, color: Colors.blue)
-          : Center(
-                  child:Column(
-                    children: [
-                      CircularProgressIndicator(backgroundColor: Colors.black,),
-                  ]))),
+          // 카메라 초기화가 완료안됐을 경우 로딩
+          child: _cameraInitialized
+              ? Container(
+                  child: Stack(children: [
+                    // 카메라
+                    SizedBox(
+                      child: CameraPreview(
+                        _cameraController,
+                      ),
+                      width: double.infinity,
+                      height: double.infinity,
+                    ),
+
+                    // ROI 박스(상단)
+                    Positioned(
+                        child: Divider(
+                          color: Colors.red,
+                          thickness: 1.0,
+                        ),
+                        height: 1,
+                        width: changePercentSizeToPixel(context, 90, true),
+                        top: changePercentSizeToPixel(context, 10, false),
+                        left: changePercentSizeToPixel(context, 5, true)),
+
+                    // ROI 박스(하단)
+                    Positioned(
+                        child: Divider(
+                          color: Colors.red,
+                          thickness: 1.0,
+                        ),
+                        height: 1,
+                        width: changePercentSizeToPixel(context, 90, true),
+                        bottom: changePercentSizeToPixel(context, 10, false),
+                        left: changePercentSizeToPixel(context, 5, true)),
+
+                    // ROI 박스(좌측)
+                    Positioned(
+                        child: VerticalDivider(
+                          color: Colors.red,
+                          thickness: 1.0,
+                        ),
+                        width: 1,
+                        height: changePercentSizeToPixel(context, 80, false),
+                        top: changePercentSizeToPixel(context, 10, false),
+                        left: changePercentSizeToPixel(context, 5, true)),
+
+                    // ROI 박스(우측)
+                    Positioned(
+                        child: VerticalDivider(
+                          color: Colors.red,
+                          thickness: 1.0,
+                        ),
+                        width: 1,
+                        height: changePercentSizeToPixel(context, 80, false),
+                        top: changePercentSizeToPixel(context, 10, false),
+                        right: changePercentSizeToPixel(context, 5, true)),
+
+
+                  ]),
+                  color: Colors.blue)
+              : Center(
+                  child: Column(children: [
+                  CircularProgressIndicator(
+                    backgroundColor: Colors.black,
+                  ),
+                ]))),
     );
   }
 }
