@@ -52,16 +52,13 @@ class MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-          child: _cameraInitialized
-              ? CameraPreview(_cameraController)
-              : Center(
+          child: _cameraInitialized ?
+          Container(child:CameraPreview(_cameraController,), width: double.infinity, height: double.infinity, color: Colors.blue)
+          : Center(
                   child:Column(
                     children: [
-                      CircularProgressIndicator(
-                      backgroundColor: Colors.black,
-                    ),
-                    Text("adsf")],
-                  ))),
+                      CircularProgressIndicator(backgroundColor: Colors.black,),
+                  ]))),
     );
   }
 }
