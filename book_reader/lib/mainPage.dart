@@ -1,70 +1,94 @@
+import 'dart:async';
+import 'dart:io';
+
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:camera/camera.dart';
-import 'package:path/path.dart' as p;
 import 'main.dart';
 import 'pixelSizeFunc.dart';
+import 'package:camera/camera.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:path/path.dart';
+
+import 'package:text_to_speech/text_to_speech.dart';
+import 'package:flutter_tts/flutter_tts.dart';
 
 class MyHomePageState extends State<MyHomePage> {
-  late CameraController _cameraController;  // 카메라 컨트롤러
-  late CameraDescription back_camera; // 카메라 객체
-  bool _cameraInitialized = false;  // 카메라 초기화 플래그
-  // late Future<void> _initializeControllerFuture;
-  int lastTouchDownMiliSecond = 0;  // 터치 다운 시간
-  int lastTouchUpMiliSecond = 0;  // 터치 업 시간
-  int touchOption = 0;  // 터치0/더블터치1/트리플터치2
+  bool isCameraInited = false; // 카메라 초기화 플래그
+  late CameraController cameraController; // 카메라 컨트롤러
+  File? imageFile;
+  String imageSavedPos = "";
+
+  late Offset touchedPos; // 터치 위치 참조
+
+  TextToSpeech tts = TextToSpeech();
+  double ttsRate = 1.5;
+  bool ttsIsRunninig = true;
+
+
+  String helpTxt =
+      "안녕하세요. 왼쪽 한번 터치는 정지와 재생. 왼쪽 두번 터치는 한문장 이전으로 이동. 오른쪽 한번 터치는 재생 속도 조절, 오른쪽 두번 터치는 한 문장 다음으로 이동 입니다. 도움말을 다시 들으려면 왼쪽 영역을 길게 눌러주세요.";
+  List<String> txtList = [];
+  int readingIdx = 0;
+
   @override
   void initState() {
     super.initState();
-    // 카메라 컨트롤러 생성
-    readyToCamera();
+    // tts 설정
+    tts.setLanguage('kr');
+    tts.setRate(ttsRate);
+    tts.speak(helpTxt);
+    helpTxt = "아아아아아아";
+    tts.speak(helpTxt);
+
+
+
+    getCamera(); // 카메라 초기화
+
+    txtList.add("첫 번째 문장입니다");
+    txtList.add("2번이요");
+    txtList.add("3번째 문장, 웁슬라가 최고야");
+    txtList.add("4번째 문장");
+    txtList.add("드디어 마지막이다. 5번째 문장");
   }
 
   @override
   void dispose() {
-    _cameraController.dispose();
     super.dispose();
   }
 
-  // 카메라 초기화
-  void readyToCamera() async {
-    // 사용 가능한 카메라 목록 받아옴(후면, 전면)
+  void getCamera() async {
+    // 카메라 목록 받아옴
     final cameras = await availableCameras();
-    // 카메라 없을 경우
-    if (0 == cameras.length) {
-      print("not found any cameras");
-      return;
-    }
-    // 후면 카메라 탐색
+    // 후면 카메라 선택
+    late CameraDescription backCamera;
     for (var camera in cameras) {
       if (camera.lensDirection == CameraLensDirection.back) {
-        back_camera = camera;
+        backCamera = camera;
         break;
       }
     }
-    // 카메라 컨트롤러 초기화
-    _cameraController = CameraController(back_camera, ResolutionPreset.max);
-    _cameraController.initialize().then((value) {
-      // 카메라 준비가 끝나면 카메라 미리보기를 보여주기 위해 앱 화면을 다시 그립니다.
-      setState(() => _cameraInitialized = true);
+
+    cameraController = CameraController(backCamera, ResolutionPreset.high);
+    cameraController.initialize().then((value) {
+      setState(() {
+        isCameraInited = true;
+      });
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-          // 카메라 초기화가 완료안됐을 경우 로딩
-          child: _cameraInitialized
-              ? GestureDetector(
+        body: isCameraInited
+            ? Container(
+                child: Center(
+                    child: GestureDetector(
                   child: Container(
+                      // 스택
                       child: Stack(children: [
-                        // 카메라
-                        SizedBox(
-                          child: CameraPreview(
-                            _cameraController,
-                          ),
-                          width: double.infinity,
-                          height: double.infinity,
+                        // 카메라라
+                        Container(
+                          child: CameraPreview(cameraController),
                         ),
 
                         // ROI 박스(상단)
@@ -113,48 +137,166 @@ class MyHomePageState extends State<MyHomePage> {
                                 changePercentSizeToPixel(context, 80, false),
                             top: changePercentSizeToPixel(context, 10, false),
                             right: changePercentSizeToPixel(context, 5, true)),
+
+                        // 왼쪽 안내
+                        Positioned(
+                            child: Opacity(
+                                opacity: 0.4,
+                                child: Container(
+                                    child: Text(
+                                      "탭: 정지/재생\n더블탭: 한분장 이전으로\n길게: 도움말",
+                                      style: TextStyle(color: Colors.white),
+                                      textAlign: TextAlign.left,
+                                    ),
+                                    color: Colors.black)),
+                            bottom:
+                                changePercentSizeToPixel(context, 15, false),
+                            left: changePercentSizeToPixel(context, 7, true)),
+
+                        // 오른쪽 안내
+                        Positioned(
+                            child: Opacity(
+                                opacity: 0.4,
+                                child: Container(
+                                    child: Text(
+                                      "탭: 재생 속도\n더블탭: 한분장 이후로\n길게: 도움말",
+                                      style: TextStyle(color: Colors.white),
+                                      textAlign: TextAlign.right,
+                                    ),
+                                    color: Colors.black)),
+                            bottom:
+                                changePercentSizeToPixel(context, 15, false),
+                            right: changePercentSizeToPixel(context, 7, true)),
+
+                        // 속도 표시
+                        Positioned(
+                          child: Opacity(
+                              opacity: 0.4,
+                              child: Container(
+                                  child: Text(
+                                    "속도: x ${ttsRate}",
+                                    style: TextStyle(color: Colors.white),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                  color: Colors.black)),
+                          left: changePercentSizeToPixel(context, 45, true),
+                          top: changePercentSizeToPixel(context, 15, false),
+                        )
                       ]),
                       color: Colors.blue),
 
                   // 배경 터치
                   onTapDown: (TapDownDetails details) {
-                    // int touchDownMiliSecond = DateTime.now().millisecondsSinceEpoch;
-                    // if (touchDownMiliSecond - lastTouchDownMiliSecond >500){
-                    //   touchOption = 0;}
-                    // else{
-                    //   touchOption = 1;
-                    // }
+                    touchedPos = details.localPosition;
+                  },
+                  // 한번 터치
+                  onTap: () async {
+                    double x = touchedPos.dx;
+                    // 왼쪽 영역
+                    if (x < changePercentSizeToPixel(context, 40, true)) {
+                      print("왼쪽${touchedPos}");
+
+                      if (ttsIsRunninig) {
+                        ttsIsRunninig = false;
+                        tts.stop();
+                      }
+                      else {
+                        ttsIsRunninig = true;
+                        tts.speak("가가가ㅏ가가가가가가가가");
+                        tts.speak("나나나나나나나나나나나나나");
+
+                      }
+                    }
+
+                    // final path = join((await getTemporaryDirectory()).path);
+                    // await cameraController.takePicture().then((value){
+                    //   imageFile = File(value.path);
+                    //   imageSavedPos = imageFile!.path;
+                    // });
                     //
-                    // switch (touchOption){
-                    //   case 0:
-                        print("다운 ${details.localPosition}");
-                    //     break;
-                    //   case 1:
-                    //     print("더블 다운${details.localPosition}");
-                    //     break;
-                    //   default:
-                    //     break;
-                    // }
+                    // // 사진을 촬영하면, 새로운 화면으로 넘어갑니다.
+                    // Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute(
+                    //     builder: (context) => DisplayPictureScreen(imageSavedPos),
+                    //   ),
+                    // );
 
-                    // lastTouchDownMiliSecond = touchDownMiliSecond;
+                    // 오른쪽 영역
+                    if (x > changePercentSizeToPixel(context, 60, true)) {
+                      print("오른쪽${touchedPos}");
 
+                      setState(() {
+                        if (ttsRate == 1.5)
+                          ttsRate = 2;
+                        else if (ttsRate == 2)
+                          ttsRate = 2.5;
+                        else if (ttsRate == 2.5)
+                          ttsRate = 1;
+                        else
+                          ttsRate = 1.5;
+                      });
+
+                      tts.setRate(ttsRate);
+                      tts.stop();
+                      if (ttsIsRunninig) tts.speak(helpTxt);
+                    }
+                  },
+                  onDoubleTapDown: (TapDownDetails details) {
+                    touchedPos = details.localPosition;
                   },
 
-                  onTapUp: (TapUpDetails details) {
-                    // print("업 ${details.localPosition}");
+                  // 더블 터치
+                  onDoubleTap: () {
+                    double x = touchedPos.dx;
+                    // 왼쪽 영역
+                    if (x < changePercentSizeToPixel(context, 40, true)) {
+                      print("왼쪽더블${touchedPos}");
+                    }
+                    // 오른쪽 영역
+                    if (x > changePercentSizeToPixel(context, 60, true)) {
+                      print("오른쪽더블${touchedPos}");
+                    }
                   },
 
-            onDoubleTapDown: (TapDownDetails detawils){print("더블다운");},
+                  // 꾹 누르기
+                  onLongPress: () {
+                    double x = touchedPos.dx;
+                    // 왼쪽 영역
+                    if (x < changePercentSizeToPixel(context, 40, true)) {
+                      print("왼쪽길게${touchedPos}");
+                      tts.speak(helpTxt);
+                      ttsIsRunninig = true;
+                    }
+                    // 오른쪽 영역
+                    if (x > changePercentSizeToPixel(context, 60, true)) {
+                      print("오른쪽길게${touchedPos}");
+                    }
+                  },
+                )),
+                color: Colors.black,
+              )
+            : Container(
+                color: Colors.black,
+              ));
+  }
+}
 
+// 사용자가 촬영한 사진을 보여주는 위젯
+class DisplayPictureScreen extends StatelessWidget {
+  late String imagePath;
 
+  DisplayPictureScreen(String path) {
+    imagePath = path;
+  }
 
-                )
-              : Center(
-                  child: Column(children: [
-                  CircularProgressIndicator(
-                    backgroundColor: Colors.black,
-                  ),
-                ]))),
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('Display the Picture')),
+      // 이미지는 디바이스에 파일로 저장됩니다. 이미지를 보여주기 위해 주어진
+      // 경로로 `Image.file`을 생성하세요.
+      body: Image.file(File(imagePath)),
     );
   }
 }
