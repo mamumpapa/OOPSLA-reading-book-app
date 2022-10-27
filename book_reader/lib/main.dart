@@ -3,8 +3,17 @@ import 'package:camera/camera.dart';
 import 'package:path/path.dart' as p;
 import 'mainPage.dart';
 
+import 'package:flutter/services.dart';
 
-void main() {
+
+void main() async{
+  // 가로모드 고정
+  WidgetsFlutterBinding.ensureInitialized();
+  await SystemChrome.setPreferredOrientations([
+    DeviceOrientation.landscapeLeft,
+    DeviceOrientation.landscapeRight,
+  ]);
+
   runApp(MyApp());
 }
 

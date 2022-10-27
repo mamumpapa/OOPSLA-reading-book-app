@@ -53,64 +53,107 @@ class MyHomePageState extends State<MyHomePage> {
       body: Center(
           // 카메라 초기화가 완료안됐을 경우 로딩
           child: _cameraInitialized
-              ? Container(
-                  child: Stack(children: [
-                    // 카메라
-                    SizedBox(
-                      child: CameraPreview(
-                        _cameraController,
-                      ),
-                      width: double.infinity,
-                      height: double.infinity,
-                    ),
-
-                    // ROI 박스(상단)
-                    Positioned(
-                        child: Divider(
-                          color: Colors.red,
-                          thickness: 2,
+              ? GestureDetector(
+                  child: Container(
+                      child: Stack(children: [
+                        // 카메라
+                        SizedBox(
+                          child: CameraPreview(
+                            _cameraController,
+                          ),
+                          width: double.infinity,
+                          height: double.infinity,
                         ),
-                        height: 1,
-                        width: changePercentSizeToPixel(context, 90, true),
-                        top: changePercentSizeToPixel(context, 10, false),
-                        left: changePercentSizeToPixel(context, 5, true)),
 
-                    // ROI 박스(하단)
-                    Positioned(
-                        child: Divider(
-                          color: Colors.red,
-                          thickness: 2,
-                        ),
-                        height: 1,
-                        width: changePercentSizeToPixel(context, 90, true),
-                        bottom: changePercentSizeToPixel(context, 10, false),
-                        left: changePercentSizeToPixel(context, 5, true)),
+                        // ROI 박스(상단)
+                        Positioned(
+                            child: Divider(
+                              color: Colors.red,
+                              thickness: 2,
+                            ),
+                            height: 1,
+                            width: changePercentSizeToPixel(context, 90, true),
+                            top: changePercentSizeToPixel(context, 10, false),
+                            left: changePercentSizeToPixel(context, 5, true)),
 
-                    // ROI 박스(좌측)
-                    Positioned(
-                        child: VerticalDivider(
-                          color: Colors.red,
-                          thickness: 2,
-                        ),
-                        width: 1,
-                        height: changePercentSizeToPixel(context, 80, false),
-                        top: changePercentSizeToPixel(context, 10, false),
-                        left: changePercentSizeToPixel(context, 5, true)),
+                        // ROI 박스(하단)
+                        Positioned(
+                            child: Divider(
+                              color: Colors.red,
+                              thickness: 2,
+                            ),
+                            height: 1,
+                            width: changePercentSizeToPixel(context, 90, true),
+                            bottom:
+                                changePercentSizeToPixel(context, 10, false),
+                            left: changePercentSizeToPixel(context, 5, true)),
 
-                    // ROI 박스(우측)
-                    Positioned(
-                        child: VerticalDivider(
-                          color: Colors.red,
-                          thickness: 2,
-                        ),
-                        width: 1,
-                        height: changePercentSizeToPixel(context, 80, false),
-                        top: changePercentSizeToPixel(context, 10, false),
-                        right: changePercentSizeToPixel(context, 5, true)),
+                        // ROI 박스(좌측)
+                        Positioned(
+                            child: VerticalDivider(
+                              color: Colors.red,
+                              thickness: 2,
+                            ),
+                            width: 1,
+                            height:
+                                changePercentSizeToPixel(context, 80, false),
+                            top: changePercentSizeToPixel(context, 10, false),
+                            left: changePercentSizeToPixel(context, 5, true)),
 
+                        // ROI 박스(우측)
+                        Positioned(
+                            child: VerticalDivider(
+                              color: Colors.red,
+                              thickness: 2,
+                            ),
+                            width: 1,
+                            height:
+                                changePercentSizeToPixel(context, 80, false),
+                            top: changePercentSizeToPixel(context, 10, false),
+                            right: changePercentSizeToPixel(context, 5, true)),
 
-                  ]),
-                  color: Colors.blue)
+                        // // 왼쪽 터치 공간
+                        // Positioned(
+                        //     child: GestureDetector(
+                        //       child: Container(
+                        //           width: changePercentSizeToPixel(
+                        //               context, 50, true),
+                        //           height: changePercentSizeToPixel(
+                        //               context, 100, false),
+                        //           color: Colors.green),
+                        //
+                        //       // 왼쪽 터치
+                        //       onTap:(){print("왼쪽 터치");}
+                        //     ),
+                        //     left: 0),
+                        //
+                        // // 오른쪽 터치 공간
+                        // Positioned(
+                        //     child: GestureDetector(
+                        //         child: Container(
+                        //             width: changePercentSizeToPixel(
+                        //                 context, 50, true),
+                        //             height: changePercentSizeToPixel(
+                        //                 context, 100, false),
+                        //             color: Colors.blue),
+                        //
+                        //         // 왼쪽 터치
+                        //         onTap:(){print("오른쪽 터치");}
+                        //     ),
+                        //     right: 0),
+                      ]),
+                      color: Colors.blue),
+
+                  // 배경 터치
+                  onTapDown: (TapDownDetails details) {
+                    print("다운 ${details.localPosition}");
+                  },
+
+                  onTapUp: (TapUpDetails details) {
+                    print("업 ${details.localPosition}");
+                  },
+
+                )
               : Center(
                   child: Column(children: [
                   CircularProgressIndicator(
