@@ -5,11 +5,13 @@ import 'main.dart';
 import 'pixelSizeFunc.dart';
 
 class MyHomePageState extends State<MyHomePage> {
-  late CameraController _cameraController;
-  late CameraDescription back_camera;
-  late Future<void> _initializeControllerFuture;
-  bool _cameraInitialized = false;
-
+  late CameraController _cameraController;  // 카메라 컨트롤러
+  late CameraDescription back_camera; // 카메라 객체
+  bool _cameraInitialized = false;  // 카메라 초기화 플래그
+  // late Future<void> _initializeControllerFuture;
+  int lastTouchDownMiliSecond = 0;  // 터치 다운 시간
+  int lastTouchUpMiliSecond = 0;  // 터치 업 시간
+  int touchOption = 0;  // 터치0/더블터치1/트리플터치2
   @override
   void initState() {
     super.initState();
@@ -111,47 +113,40 @@ class MyHomePageState extends State<MyHomePage> {
                                 changePercentSizeToPixel(context, 80, false),
                             top: changePercentSizeToPixel(context, 10, false),
                             right: changePercentSizeToPixel(context, 5, true)),
-
-                        // // 왼쪽 터치 공간
-                        // Positioned(
-                        //     child: GestureDetector(
-                        //       child: Container(
-                        //           width: changePercentSizeToPixel(
-                        //               context, 50, true),
-                        //           height: changePercentSizeToPixel(
-                        //               context, 100, false),
-                        //           color: Colors.green),
-                        //
-                        //       // 왼쪽 터치
-                        //       onTap:(){print("왼쪽 터치");}
-                        //     ),
-                        //     left: 0),
-                        //
-                        // // 오른쪽 터치 공간
-                        // Positioned(
-                        //     child: GestureDetector(
-                        //         child: Container(
-                        //             width: changePercentSizeToPixel(
-                        //                 context, 50, true),
-                        //             height: changePercentSizeToPixel(
-                        //                 context, 100, false),
-                        //             color: Colors.blue),
-                        //
-                        //         // 왼쪽 터치
-                        //         onTap:(){print("오른쪽 터치");}
-                        //     ),
-                        //     right: 0),
                       ]),
                       color: Colors.blue),
 
                   // 배경 터치
                   onTapDown: (TapDownDetails details) {
-                    print("다운 ${details.localPosition}");
+                    // int touchDownMiliSecond = DateTime.now().millisecondsSinceEpoch;
+                    // if (touchDownMiliSecond - lastTouchDownMiliSecond >500){
+                    //   touchOption = 0;}
+                    // else{
+                    //   touchOption = 1;
+                    // }
+                    //
+                    // switch (touchOption){
+                    //   case 0:
+                        print("다운 ${details.localPosition}");
+                    //     break;
+                    //   case 1:
+                    //     print("더블 다운${details.localPosition}");
+                    //     break;
+                    //   default:
+                    //     break;
+                    // }
+
+                    // lastTouchDownMiliSecond = touchDownMiliSecond;
+
                   },
 
                   onTapUp: (TapUpDetails details) {
-                    print("업 ${details.localPosition}");
+                    // print("업 ${details.localPosition}");
                   },
+
+            onDoubleTapDown: (TapDownDetails detawils){print("더블다운");},
+
+
 
                 )
               : Center(
