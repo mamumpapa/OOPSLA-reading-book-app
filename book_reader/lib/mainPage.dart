@@ -24,7 +24,6 @@ class MyHomePageState extends State<MyHomePage> {
   double ttsRate = 1.5;
   bool ttsIsRunninig = true;
 
-
   String helpTxt =
       "안녕하세요. 왼쪽 한번 터치는 정지와 재생. 왼쪽 두번 터치는 한문장 이전으로 이동. 오른쪽 한번 터치는 재생 속도 조절, 오른쪽 두번 터치는 한 문장 다음으로 이동 입니다. 도움말을 다시 들으려면 왼쪽 영역을 길게 눌러주세요.";
   List<String> txtList = [];
@@ -37,17 +36,14 @@ class MyHomePageState extends State<MyHomePage> {
     tts.setLanguage('kr');
     tts.setRate(ttsRate);
     tts.speak(helpTxt);
-    helpTxt = "아아아아아아";
-    tts.speak(helpTxt);
-
-
 
     getCamera(); // 카메라 초기화
 
     txtList.add("첫 번째 문장입니다");
     txtList.add("2번이요");
     txtList.add("3번째 문장, 웁슬라가 최고야");
-    txtList.add("4번째 문장");
+    txtList.add(
+        "네번째 문장입니다, 이 문장은 조금 길게 테스트 해봐도 괜찮을 것 같다고 생각이 드는 바입니다. 한 마디만 더 쓸게요");
     txtList.add("드디어 마지막이다. 5번째 문장");
   }
 
@@ -88,8 +84,8 @@ class MyHomePageState extends State<MyHomePage> {
                       child: Stack(children: [
                         // 카메라라
                         Container(
-                          child: CameraPreview(cameraController),
-                        ),
+                            // child: CameraPreview(cameraController),
+                            ),
 
                         // ROI 박스(상단)
                         Positioned(
@@ -194,17 +190,41 @@ class MyHomePageState extends State<MyHomePage> {
                     double x = touchedPos.dx;
                     // 왼쪽 영역
                     if (x < changePercentSizeToPixel(context, 40, true)) {
-                      print("왼쪽${touchedPos}");
-
+                      // 정지
                       if (ttsIsRunninig) {
                         ttsIsRunninig = false;
                         tts.stop();
                       }
+                      // 재생
                       else {
                         ttsIsRunninig = true;
-                        tts.speak("가가가ㅏ가가가가가가가가");
-                        tts.speak("나나나나나나나나나나나나나");
 
+                        for (int i = readingIdx; i < txtList.length; i++) {
+                          // 첫 문장일 경우
+                          if (i == 0)
+                            tts.speak(txtList[i]);
+                          // 딜레이 계산하는 경우
+                          else {
+                            // 딜레이 계산
+                            // double delayedTime = 0;
+                            // for(int j = 0; j < i; j++){
+                            //   delayedTime += (txtList[j].length * 0.1 * (4-ttsRate));
+                            // }
+                            if (ttsIsRunninig)
+                              await Future.delayed(
+                                  Duration(
+                                    seconds: (txtList[i - 1].length *
+                                            0.1 *
+                                            (4 - ttsRate))
+                                        .toInt(),
+                                  ),
+                                  () => tts.speak(txtList[i]));
+                          }
+                          readingIdx = i;
+
+                          if (i == txtList.length - 1) readingIdx = 0;
+                        }
+                        ttsIsRunninig = false;
                       }
                     }
 
@@ -224,8 +244,6 @@ class MyHomePageState extends State<MyHomePage> {
 
                     // 오른쪽 영역
                     if (x > changePercentSizeToPixel(context, 60, true)) {
-                      print("오른쪽${touchedPos}");
-
                       setState(() {
                         if (ttsRate == 1.5)
                           ttsRate = 2;
@@ -250,13 +268,9 @@ class MyHomePageState extends State<MyHomePage> {
                   onDoubleTap: () {
                     double x = touchedPos.dx;
                     // 왼쪽 영역
-                    if (x < changePercentSizeToPixel(context, 40, true)) {
-                      print("왼쪽더블${touchedPos}");
-                    }
+                    if (x < changePercentSizeToPixel(context, 40, true)) {}
                     // 오른쪽 영역
-                    if (x > changePercentSizeToPixel(context, 60, true)) {
-                      print("오른쪽더블${touchedPos}");
-                    }
+                    if (x > changePercentSizeToPixel(context, 60, true)) {}
                   },
 
                   // 꾹 누르기
@@ -264,14 +278,11 @@ class MyHomePageState extends State<MyHomePage> {
                     double x = touchedPos.dx;
                     // 왼쪽 영역
                     if (x < changePercentSizeToPixel(context, 40, true)) {
-                      print("왼쪽길게${touchedPos}");
                       tts.speak(helpTxt);
                       ttsIsRunninig = true;
                     }
                     // 오른쪽 영역
-                    if (x > changePercentSizeToPixel(context, 60, true)) {
-                      print("오른쪽길게${touchedPos}");
-                    }
+                    if (x > changePercentSizeToPixel(context, 60, true)) {}
                   },
                 )),
                 color: Colors.black,
