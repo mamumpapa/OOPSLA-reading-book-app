@@ -200,27 +200,29 @@ class MyHomePageState extends State<MyHomePage> {
                         ttsIsRunninig = true;
 
                         for (int i = readingIdx; i < txtList.length; i++) {
-                          // 첫 문장일 경우
-                          if (i == 0)
-                            tts.speak(txtList[i]);
-                          // 딜레이 계산하는 경우
-                          else {
-                            // 딜레이 계산
-                            // double delayedTime = 0;
-                            // for(int j = 0; j < i; j++){
-                            //   delayedTime += (txtList[j].length * 0.1 * (4-ttsRate));
-                            // }
-                            if (ttsIsRunninig)
-                              await Future.delayed(
-                                  Duration(
-                                    seconds: (txtList[i - 1].length *
-                                            0.1 *
-                                            (4 - ttsRate))
-                                        .toInt(),
-                                  ),
-                                  () => tts.speak(txtList[i]));
-                          }
-                          readingIdx = i;
+                          // // 첫 문장일 경우
+                          // if (i == 0)
+                          //   tts.speak(txtList[i]);
+                          // // 딜레이 계산하는 경우
+                          // else {
+                          //   // 딜레이 계산
+                          //   // double delayedTime = 0;
+                          //   // for(int j = 0; j < i; j++){
+                          //   //   delayedTime += (txtList[j].length * 0.1 * (4-ttsRate));
+                          //   // }
+                          //   if (ttsIsRunninig)
+                          //     await Future.delayed(
+                          //         Duration(
+                          //           seconds: (txtList[i - 1].length *
+                          //                   0.1 *
+                          //                   (4 - ttsRate))
+                          //               .toInt(),
+                          //         ),
+                          //         () => tts.speak(txtList[i]));
+                          // }
+                          // readingIdx = i;
+                          await Future.delayed(Duration(seconds: 1), (){tts.speak(txtList[i]);});
+
 
                           if (i == txtList.length - 1) readingIdx = 0;
                         }
