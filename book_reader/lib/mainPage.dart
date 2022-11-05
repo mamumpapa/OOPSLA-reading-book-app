@@ -25,6 +25,7 @@ import 'package:audioplayers/audioplayers.dart';
 // import 'package:web_socket_channel/web_socket_channel.dart';
 
 class MyHomePageState extends State<MyHomePage> {
+  bool canTouch = true;
   bool isCameraInited = false; // 카메라 초기화 플래그
   late CameraController cameraController; // 카메라 컨트롤러
   File? imageFile; // 이미지 파일 저장
@@ -238,37 +239,40 @@ class MyHomePageState extends State<MyHomePage> {
                   },
                   // 한번 터치
                   onTap: () async {
-                    double x = touchedPos.dx;
-                    // 왼쪽 영역
-                    if (x < changePercentSizeToPixel(context, 40, true)) {
-                      print("터치_읽기 상태: $ttsIsRunninig");
+                    if(canTouch){
+                      double x = touchedPos.dx;
+                      // 왼쪽 영역
+                      if (x < changePercentSizeToPixel(context, 40, true)) {
+                        print("터치_읽기 상태: $ttsIsRunninig");
 
-                      // 정지
-                      if (ttsIsRunninig) {
-                        tts.stop();
-                        ttsStop(tts);
+                        // 정지
+                        if (ttsIsRunninig) {
+                          tts.stop();
+                          ttsStop(tts);
+                        }
+                        // 재생
+                        else {
+                          readPage();
+                        }
                       }
-                      // 재생
-                      else {
-                        readPage();
+
+                      // 오른쪽 영역
+                      if (x > changePercentSizeToPixel(context, 60, true)) {
+                        setState(() {
+                          if (ttsRateIdx < 4)
+                            ttsRateIdx++;
+                          else
+                            ttsRateIdx = 0;
+                        });
+
+                        tts.setSpeechRate(ttsRateList[ttsRateIdx]);
+                        if (ttsIsRunninig) {
+                          ttsStop(tts);
+                          ttsSpeak(tts, readingTxt);
+                        }
                       }
                     }
 
-                    // 오른쪽 영역
-                    if (x > changePercentSizeToPixel(context, 60, true)) {
-                      setState(() {
-                        if (ttsRateIdx < 4)
-                          ttsRateIdx++;
-                        else
-                          ttsRateIdx = 0;
-                      });
-
-                      tts.setSpeechRate(ttsRateList[ttsRateIdx]);
-                      if (ttsIsRunninig) {
-                        ttsStop(tts);
-                        ttsSpeak(tts, readingTxt);
-                      }
-                    }
                   },
 
                   onDoubleTapDown: (TapDownDetails details) {
@@ -277,43 +281,72 @@ class MyHomePageState extends State<MyHomePage> {
 
                   // 더블 터치
                   onDoubleTap: () {
-                    double x = touchedPos.dx;
-                    // 왼쪽 영역
-                    if (x < changePercentSizeToPixel(context, 40, true)) {
-                      setState(() {
-                        if (readingIdx > 0) readingIdx--;
-                        readingTxt = txtList[readingIdx];
-                      });
+                    if(canTouch){
+                      double x = touchedPos.dx;
+                      // 왼쪽 영역
+                      if (x < changePercentSizeToPixel(context, 40, true)) {
+                        setState(() {
+                          if (readingIdx > 0) readingIdx--;
+                          readingTxt = txtList[readingIdx];
+                        });
+                      }
+                      // 오른쪽 영역
+                      if (x > changePercentSizeToPixel(context, 60, true)) {
+                        setState(() {
+                          if (readingIdx < txtList.length - 1) readingIdx++;
+                          readingTxt = txtList[readingIdx];
+                        });
+                      }
+                      ttsStop(tts);
+                      ttsSpeak(tts, readingTxt);
                     }
-                    // 오른쪽 영역
-                    if (x > changePercentSizeToPixel(context, 60, true)) {
-                      setState(() {
-                        if (readingIdx < txtList.length - 1) readingIdx++;
-                        readingTxt = txtList[readingIdx];
-                      });
-                    }
-                    ttsStop(tts);
-                    ttsSpeak(tts, readingTxt);
                   },
 
                   // 꾹 누르기
                   onLongPress: () async {
-                    double x = touchedPos.dx;
-                    // 왼쪽 영역
-                    if (x < changePercentSizeToPixel(context, 40, true)) {
-                      ttsSpeakHelp(tts);
-                    }
-                    // 오른쪽 영역
-                    if (x > changePercentSizeToPixel(context, 60, true)) {
-                      scanPage(context).then((value){
-                        if(value < 10){
+                    if(canTouch){
+                      double x = touchedPos.dx;
+                      // 왼쪽 영역
+                      if (x < changePercentSizeToPixel(context, 40, true)) {
+                        ttsSpeakHelp(tts);
+                      }
+                      // 오른쪽 영역
+                      if (x > changePercentSizeToPixel(context, 60, true)) {
 
-                        }
-                        else{
-                          readPage();
-                        }
-                      });
+                        canTouch = false;
+                        ttsStop(tts);
+                        await audioPlayer.setSource(AssetSource('notice.mp3'));
+                        // await audioPlayer.play(AssetSource('notice.mp3'));
+                        await audioPlayer.setVolume(2);
+                        await audioPlayer.resume();
+                        audioPlayer.onPlayerComplete.listen((event) {
+                          setState(() {
+                            readingTxt = "페이지 인식중입니다.";
+                            ttsSpeak(tts, readingTxt);
+                          });
+                          tts.setCompletionHandler(() {
+                            ttsStop(tts);
+                            scanPage(context).then((value){
+                              if(value < 10){
+                                ttsSpeak(tts, '페이지가 인식되지 않았습니다. 카메라를 조정한 후 다시 인식 시켜주세요.');
+                                tts.setCompletionHandler(() {
+                                  ttsStop(tts);
+                                });
+                              }
+                              else{
+                                readPage();
+                              }
+                              canTouch = true;
+                            });
+                          });
+                        });
+
+
+
+
+                      }
                     }
+
                   },
                 )),
                 color: Colors.black,
@@ -382,19 +415,7 @@ class MyHomePageState extends State<MyHomePage> {
 
   // 책 스캔
   Future<int> scanPage(BuildContext context) async {
-    ttsStop(tts);
-    await audioPlayer.setSource(AssetSource('notice.mp3'));
-    // await audioPlayer.play(AssetSource('notice.mp3'));
-    await audioPlayer.setVolume(2);
-    await audioPlayer.resume();
-    audioPlayer.onPlayerComplete.listen((event) {
-      setState(() {
-        readingTxt = "페이지 인식중입니다.";
-      });
-      tts.setCompletionHandler(() {
-        ttsStop(tts);
-      });
-    });
+
 
     final path = join((await getTemporaryDirectory()).path);
     await cameraController.takePicture().then((value) {
