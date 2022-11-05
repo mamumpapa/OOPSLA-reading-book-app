@@ -2,9 +2,9 @@
     package="com.example.book_reader">
    <application
         android:requestLegacyExternalStorage="true"
-        android:label="book_reader"
+        android:label="우리 함께 읽어요"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/book_icon">
         <activity
             android:name=".MainActivity"
             android:exported="true"
