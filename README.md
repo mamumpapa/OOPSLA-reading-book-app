@@ -1,0 +1,86 @@
+# oopsla__AcademicConference2022
+2022 sch 학술제_oopsla
+<div class="entry-content">
+				            <!-- Revenue - START -->
+
+<!-- Revenue - END -->
+
+            <div class="tt_article_useless_p_margin contents_style"><figure class="imageblock alignCenter" data-ke-mobilestyle="widthOrigin" data-origin-width="1440" data-origin-height="620"><span data-url="https://blog.kakaocdn.net/dn/cb2wUn/btrRnldy9rd/MFtx4nByuKTM3EbBAEObn1/img.png" data-lightbox="lightbox" data-alt=" 앱 구동 사진 "><img src="https://blog.kakaocdn.net/dn/cb2wUn/btrRnldy9rd/MFtx4nByuKTM3EbBAEObn1/img.png" srcset="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fcb2wUn%2FbtrRnldy9rd%2FMFtx4nByuKTM3EbBAEObn1%2Fimg.png" onerror="this.onerror=null; this.src='//t1.daumcdn.net/tistory_admin/static/images/no-image-v1.png'; this.srcset='//t1.daumcdn.net/tistory_admin/static/images/no-image-v1.png';" data-origin-width="1440" data-origin-height="620"></span><figcaption> 앱 구동 사진 </figcaption>
+</figure>
+
+<p data-ke-size="size16" style="text-align: left;"><b></b>이번 컴퓨터공학과 학술제에 참가하면서 앱개발 프로젝트를 진행하게 되었다.<br>프로젝트는 앱개발, 서버 및 DB, 영상처리 세 파트로 나눠 분배하였고 나는 그중에 앱개발 파트를 담당했다.<br>아래부터 본격적으로 우리가 만든 어플에 대해서 설명하겠다.</p>
+<h3 style="text-align: left;" data-ke-size="size23"><br>1. 개요</h3>
+<h4 style="text-align: left;" data-ke-size="size20">배리어프리</h4>
+<blockquote data-ke-style="style2">
+  장애인 및 고령자, 임산부 등 사회적 약자들의 사회 생활에 지장이 되는 물리적인 장애물이나 심리적인 장벽을 없애기 위해 실시하는 운동 및 시책 
+</blockquote>
+<p data-ke-size="size16" style="text-align: left;">우리는 2022년 핫 키워드로 떠오르고 있는 '배리어프리'에 중점을 두고 앱을 구상했다.<br>이 어플을 통해, 독서의 어려움으로 인해 발생하는 시각장애인과 다른 사람들간의 정보의 격차를 줄일수 있을것으로 예상한다.<br> <br>어플을 한 줄로 설명하자면 '<b>종이로 인쇄된 책을 읽어주는 어플</b>'이다.<br> <br>기존에 오디오북, 점자책 등 기존 시각장애인의 독서를 위한 서비스가 많이 존재하는데 해당 어플이 왜 필요하냐고 물을 수 있다.</p><figure class="imageblock alignLeft" data-ke-mobilestyle="widthOrigin" data-origin-width="1024" data-origin-height="379"><span data-url="https://blog.kakaocdn.net/dn/dKbiex/btrRltQPO19/FhNhnsDTBWg7UVRZHvSYWk/img.png" data-lightbox="lightbox"><img src="https://blog.kakaocdn.net/dn/dKbiex/btrRltQPO19/FhNhnsDTBWg7UVRZHvSYWk/img.png" srcset="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FdKbiex%2FbtrRltQPO19%2FFhNhnsDTBWg7UVRZHvSYWk%2Fimg.png" onerror="this.onerror=null; this.src='//t1.daumcdn.net/tistory_admin/static/images/no-image-v1.png'; this.srcset='//t1.daumcdn.net/tistory_admin/static/images/no-image-v1.png';" width="533" data-origin-width="1024" data-origin-height="379"></span></figure>
+
+<p data-ke-size="size16" style="text-align: left;">위의 설문조사 결과를 보면, 오디오북 같은 기존의 매체는 자료의 수가 너무 적어, 시각장애인이 읽고 싶은 책이 있어도 정작 해당 서비스가 지원이 안되면 읽기 어려운 문제가 있었다.<br>우리가 만든 앱을 이용한다면 기존의 방대한 양의 종이책들을 읽을수 있게 됨으로 위와같은 문제 해결에 도움이 될수 있다고 생각한다.<br> </p>
+<h3 style="text-align: left;" data-ke-size="size23">2. 프로그램 결과</h3>
+<p data-ke-size="size16" style="text-align: left;"></p><figure class="imagegridblock">
+  <div class="image-container"><span data-url="https://blog.kakaocdn.net/dn/eozY75/btrRmTuSuYt/5gpXe7Ir3kJGRd6aEpXNuK/img.png" data-lightbox="lightbox" data-origin-width="776" data-origin-height="656" style="width: 45.5345%;"><img src="https://blog.kakaocdn.net/dn/eozY75/btrRmTuSuYt/5gpXe7Ir3kJGRd6aEpXNuK/img.png" alt="" srcset="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FeozY75%2FbtrRmTuSuYt%2F5gpXe7Ir3kJGRd6aEpXNuK%2Fimg.png" onerror="this.onerror=null; this.src='//t1.daumcdn.net/tistory_admin/static/images/no-image-v1.png'; this.srcset='//t1.daumcdn.net/tistory_admin/static/images/no-image-v1.png';"></span><span data-url="https://blog.kakaocdn.net/dn/bkwkSW/btrRiWsE4eg/Bz0b6wkqWSrXIL1MSgev3k/img.png" data-lightbox="lightbox" data-origin-width="907" data-origin-height="655" style="width: 53.3027%;"><img src="https://blog.kakaocdn.net/dn/bkwkSW/btrRiWsE4eg/Bz0b6wkqWSrXIL1MSgev3k/img.png" alt="" srcset="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbkwkSW%2FbtrRiWsE4eg%2FBz0b6wkqWSrXIL1MSgev3k%2Fimg.png" onerror="this.onerror=null; this.src='//t1.daumcdn.net/tistory_admin/static/images/no-image-v1.png'; this.srcset='//t1.daumcdn.net/tistory_admin/static/images/no-image-v1.png';"></span></div>
+  <figcaption>어플 동작 모습</figcaption>
+</figure>
+<figure class="imageblock alignCenter" data-ke-mobilestyle="widthOrigin" data-origin-width="816" data-origin-height="352"><span data-url="https://blog.kakaocdn.net/dn/cQHNsq/btrRi09JWZv/FR8HSZjMBdnQc8QVMsdvO0/img.png" data-lightbox="lightbox"><img src="https://blog.kakaocdn.net/dn/cQHNsq/btrRi09JWZv/FR8HSZjMBdnQc8QVMsdvO0/img.png" srcset="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcQHNsq%2FbtrRi09JWZv%2FFR8HSZjMBdnQc8QVMsdvO0%2Fimg.png" onerror="this.onerror=null; this.src='//t1.daumcdn.net/tistory_admin/static/images/no-image-v1.png'; this.srcset='//t1.daumcdn.net/tistory_admin/static/images/no-image-v1.png';" data-origin-width="816" data-origin-height="352"></span></figure>
+<figure class="imageblock alignCenter" data-ke-mobilestyle="widthOrigin" data-origin-width="816" data-origin-height="351"><span data-url="https://blog.kakaocdn.net/dn/bNmTie/btrRh6CGio2/Tr4WtWxv0Eka3FAO47HqSk/img.png" data-lightbox="lightbox"><img src="https://blog.kakaocdn.net/dn/bNmTie/btrRh6CGio2/Tr4WtWxv0Eka3FAO47HqSk/img.png" srcset="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbNmTie%2FbtrRh6CGio2%2FTr4WtWxv0Eka3FAO47HqSk%2Fimg.png" onerror="this.onerror=null; this.src='//t1.daumcdn.net/tistory_admin/static/images/no-image-v1.png'; this.srcset='//t1.daumcdn.net/tistory_admin/static/images/no-image-v1.png';" data-origin-width="816" data-origin-height="351"></span></figure>
+
+<p data-ke-size="size16" style="text-align: left;">시각장애인도 사용하기 용이하도록 UI를 최대한 간단하게 디자인했고, 불필요하다고 생각되는 기능은 제거했다.<br>아래는 프로그램 사용 방법에 대한 기술이다.<br> </p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+ <li>시각장애인이 사용하기 쉽도록 터치 제스처 인터페이스 사용</li>
+ <li>프로그램이 시작하면 UI 기능에 관한 도움말 제공(음성으로)</li>
+ <li>왼쪽 화면을 탭 하여 재생/정지</li>
+ <li>도움말을 다시 듣고 싶을 경우, 왼쪽 화면을 길게 눌러서 다시 재생</li>
+ <li>빠른 속도로 책을 읽기 원하는 경우를 위해 속도 조절, 한 문장 단위 앞뒤로 이동 기능 제공</li>
+ <li>책을 읽는 도중에 페이지를 건너 띄고 싶을 경우 오른쪽을 길게 눌러 페이지 다시 인식</li>
+</ul>
+<p data-ke-size="size16" style="text-align: left;"> </p>
+<h3 style="text-align: left;" data-ke-size="size23">3. 프로그램 내부 동작 및 개발 환경</h3>
+<p data-ke-size="size16" style="text-align: left;">어플리케이션의 내부 동작은 이렇다.</p><figure class="imageblock alignCenter" data-ke-mobilestyle="widthOrigin" data-origin-width="1914" data-origin-height="502"><span data-url="https://blog.kakaocdn.net/dn/BegxE/btrRlHhczvD/jmj0HtXPz2lnS06zLsk4C1/img.png" data-lightbox="lightbox" data-alt=" 프로그램 전체 흐름 및 서버 통신 "><img src="https://blog.kakaocdn.net/dn/BegxE/btrRlHhczvD/jmj0HtXPz2lnS06zLsk4C1/img.png" srcset="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FBegxE%2FbtrRlHhczvD%2Fjmj0HtXPz2lnS06zLsk4C1%2Fimg.png" onerror="this.onerror=null; this.src='//t1.daumcdn.net/tistory_admin/static/images/no-image-v1.png'; this.srcset='//t1.daumcdn.net/tistory_admin/static/images/no-image-v1.png';" data-origin-width="1914" data-origin-height="502"></span><figcaption> 프로그램 전체 흐름 및 서버 통신 </figcaption>
+</figure>
+<figure class="imageblock alignCenter" data-ke-mobilestyle="widthOrigin" data-origin-width="1657" data-origin-height="851"><span data-url="https://blog.kakaocdn.net/dn/dFmwvO/btrRitqGQtO/9bfrkS4NVCKbUX7gd9DgO0/img.png" data-lightbox="lightbox" data-alt=" 이미지 가공 예시"><img src="https://blog.kakaocdn.net/dn/dFmwvO/btrRitqGQtO/9bfrkS4NVCKbUX7gd9DgO0/img.png" srcset="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FdFmwvO%2FbtrRitqGQtO%2F9bfrkS4NVCKbUX7gd9DgO0%2Fimg.png" onerror="this.onerror=null; this.src='//t1.daumcdn.net/tistory_admin/static/images/no-image-v1.png'; this.srcset='//t1.daumcdn.net/tistory_admin/static/images/no-image-v1.png';" data-origin-width="1657" data-origin-height="851"></span><figcaption> 이미지 가공 예시</figcaption>
+</figure>
+
+<p data-ke-size="size16" style="text-align: left;">개발환경: </p>
+<blockquote data-ke-style="style3">
+  App: Flutter / Dart 
+ <br>Server: Django / Python 
+ <br>ImageProcessing: OpenCV / Python 
+ <br>OCR: Naver CLOVA OCR library 
+</blockquote>
+<p data-ke-size="size16" style="text-align: left;"> <br>App 개발 페이지(서버측 기능X):</p>
+<blockquote data-ke-style="style2"> <a href="https://github.com/haZuny/oopsla__AcademicConference2022.git" target="_blank"><span>https://github.com/haZuny/oopsla__AcademicConference2022.git</span></a> 
+</blockquote>
+<p data-ke-size="size16" style="text-align: left;"> </p></div>
+            <!-- Revenue - START -->
+
+<!-- Revenue - END -->
+
+                    <div class="container_postbtn #post_button_group">
+  <div class="postbtn_like"><script>window.ReactionButtonType = 'reaction';
+window.ReactionApiUrl = '//hayden-igm.tistory.com/reaction';
+window.ReactionReqBody = {
+    entryId: 6
+}</script>
+<div class="wrap_btn" id="reaction-6"><button class="btn_post uoc-icon"><div class="uoc-icon empathy_up_without_ani like_on"><span class="ico_postbtn ico_like">좋아요</span><span class="txt_like uoc-count">1</span></div></button></div>
+<script src="https://tistory1.daumcdn.net/tistory_admin/userblog/userblog-c1ac236bb304b4ddfd1a76239241493348601265/static/script/reaction-button-container.min.js"></script><div class="wrap_btn wrap_btn_share"><button type="button" class="btn_post sns_btn btn_share" aria-expanded="false" data-thumbnail-url="https://img1.daumcdn.net/thumb/R800x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fcb2wUn%2FbtrRnldy9rd%2FMFtx4nByuKTM3EbBAEObn1%2Fimg.png" data-title="시각장애인을 위한 종이책 Reading Application" data-description="이번 컴퓨터공학과 학술제에 참가하면서 앱개발 프로젝트를 진행하게 되었다. 프로젝트는 앱개발, 서버 및 DB, 영상처리 세 파트로 나눠 분배하였고 나는 그중에 앱개발 파트를 담당했다. 아래부터 본격적으로 우리가 만든 어플에 대해서 설명하겠다. 1. 개요 배리어프리 장애인 및 고령자, 임산부 등 사회적 약자들의 사회 생활에 지장이 되는 물리적인 장애물이나 심리적인 장벽을 없애기 위해 실시하는 운동 및 시책 우리는 2022년 핫 키워드로 떠오르고 있는 '배리어프리'에 중점을 두고 앱을 구상했다. 이 어플을 통해, 독서의 어려움으로 인해 발생하는 시각장애인과 다른 사람들간의 정보의 격차를 줄일수 있을것으로 예상한다. 어플을 한 줄로 설명하자면 '종이로 인쇄된 책을 읽어주는 어플'이다. 기존에 오디오북, 점자책 .." data-profile-image="https://tistory1.daumcdn.net/tistory/5518850/attach/f292eaa7775c4b7f8956065a6212d91a" data-profile-name="hayden igm" data-pc-url="https://hayden-igm.tistory.com/6" data-relative-pc-url="/6" data-blog-title="Hayden의 초보 개발자 일지"><span class="ico_postbtn ico_share">공유하기</span></button>
+  <div class="layer_post" id="tistorySnsLayer"><div class="bundle_post"><a href="#none" class="btn_mark" data-service="facebook"><span class="ico_sns ico_fb"></span>페이스북으로 공유</a><a href="#none" class="btn_mark" data-service="kakaostory"><span class="ico_sns ico_ks"></span>카카오스토리로 공유</a><a href="#none" class="btn_mark" data-service="twitter"><span class="ico_sns ico_tw"></span>트위터로 공유</a><a href="#none" class="btn_mark" data-service="url"><span class="ico_sns ico_url"></span>URL 복사</a><span class="ico_postbtn ico_arrbt"></span></div></div>
+</div><div class="wrap_btn"><button type="button" class="btn_post" data-entry-id="6"><span class="ico_postbtn ico_statistics">통계</span></button></div><div class="wrap_btn wrap_btn_etc" data-entry-id="6" data-entry-visibility="public" data-category-visibility="public"><button type="button" class="btn_post btn_etc1" aria-expanded="false"><span class="ico_postbtn ico_etc">게시글 관리</span></button>
+  <div class="layer_post" id="tistoryEtcLayer"></div>
+</div></div>
+</div>
+
+                    <!-- PostListinCategory - START -->
+<div class="another_category another_category_color_gray">
+  <h4>'<a href="/category/%EC%BD%94%EB%94%A9">코딩</a> &gt; <a href="/category/%EC%BD%94%EB%94%A9/%EB%A7%8C%EB%93%A0%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%A8">만든 프로그램</a>' 카테고리의 다른 글</h4>
+  <table>
+    <tbody><tr>
+      <th><a href="/3">e-book 전자책 PDF 파일 추출하기</a>&nbsp;&nbsp;<span>(0)</span></th>
+      <td>2022.09.07</td>
+    </tr>
+  </tbody></table>
+</div>
+
+<!-- PostListinCategory - END -->
+
+			</div>
