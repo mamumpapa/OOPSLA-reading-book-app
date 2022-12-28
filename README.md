@@ -1,7 +1,6 @@
 <div class="tt_article_useless_p_margin contents_style"><figure class="imageblock alignCenter" data-ke-mobilestyle="widthOrigin" data-origin-width="1440" data-origin-height="620"><span data-url="https://blog.kakaocdn.net/dn/cb2wUn/btrRnldy9rd/MFtx4nByuKTM3EbBAEObn1/img.png" data-lightbox="lightbox" data-alt=" 앱 구동 사진 "><img src="https://blog.kakaocdn.net/dn/cb2wUn/btrRnldy9rd/MFtx4nByuKTM3EbBAEObn1/img.png" srcset="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fcb2wUn%2FbtrRnldy9rd%2FMFtx4nByuKTM3EbBAEObn1%2Fimg.png" onerror="this.onerror=null; this.src='//t1.daumcdn.net/tistory_admin/static/images/no-image-v1.png'; this.srcset='//t1.daumcdn.net/tistory_admin/static/images/no-image-v1.png';" data-origin-width="1440" data-origin-height="620"></span><figcaption> 앱 구동 사진 </figcaption>
 </figure>
-
-<p data-ke-size="size16" style="text-align: left;"><b></b>이번 컴퓨터공학과 학술제에 참가하면서 앱개발 프로젝트를 진행하게 되었다.<br>프로젝트는 앱개발, 서버 및 DB, 영상처리 세 파트로 나눠 분배하였고 나는 그중에 앱개발 파트를 담당했다.<br>아래부터 본격적으로 우리가 만든 어플에 대해서 설명하겠다.</p>
+  
 <h3 style="text-align: left;" data-ke-size="size23"><br>1. 개요</h3>
 <h4 style="text-align: left;" data-ke-size="size20">배리어프리</h4>
 <blockquote data-ke-style="style2">
