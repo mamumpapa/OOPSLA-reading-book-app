@@ -1,3 +1,26 @@
+# 2022 순천향대학교 공과대학 학술제 장려상 수상
+![KakaoTalk_20230303_003331285_01](https://user-images.githubusercontent.com/64102831/222475238-eeb37f11-770f-499c-80b4-48dbf2d57d95.jpg)
+
+
+# 발표 자료
+![슬라이드1](https://user-images.githubusercontent.com/64102831/222473138-ce54d9bf-328b-48ee-b603-6d496e0bbe03.PNG)
+![슬라이드2](https://user-images.githubusercontent.com/64102831/222473142-29bc4000-baa1-4430-94c4-df5cbdc099cb.PNG)
+![슬라이드3](https://user-images.githubusercontent.com/64102831/222473148-6266b9ad-ad44-43ad-b9ac-b2e8ae786e53.PNG)
+![슬라이드4](https://user-images.githubusercontent.com/64102831/222473152-1b37f45d-3c19-49ca-a991-f22a5930e5ad.PNG)
+![슬라이드5](https://user-images.githubusercontent.com/64102831/222473158-5cf494bc-3b5f-4f52-adbd-eba45ebc06e4.PNG)
+![슬라이드6](https://user-images.githubusercontent.com/64102831/222473161-e5b84b22-ad93-4795-92ba-142d5c813199.PNG)
+![슬라이드7](https://user-images.githubusercontent.com/64102831/222473162-f0629e37-bfd4-424a-b603-ac0535b5385d.PNG)
+![슬라이드8](https://user-images.githubusercontent.com/64102831/222473165-f7eb5d5b-fdea-4a21-8812-c67772c3a571.PNG)
+![슬라이드9](https://user-images.githubusercontent.com/64102831/222473168-2f9debc7-68bf-4d12-875d-100610b6ba3d.PNG)
+![슬라이드10](https://user-images.githubusercontent.com/64102831/222473174-8a8fae5d-1fdb-4638-8cbc-94f33570fc5a.PNG)
+![슬라이드11](https://user-images.githubusercontent.com/64102831/222473176-8721c8bc-7c98-4c2b-a473-69d0fb327975.PNG)
+![슬라이드12](https://user-images.githubusercontent.com/64102831/222473180-f8fbee58-c6aa-41ea-bccb-8ec0bd46c7a8.PNG)
+![슬라이드13](https://user-images.githubusercontent.com/64102831/222473186-a171b39d-2f67-42a6-93bd-417d5281466f.PNG)
+![슬라이드14](https://user-images.githubusercontent.com/64102831/222473192-80b95b68-f4d1-41e2-abcf-c08538c949d3.PNG)
+![슬라이드15](https://user-images.githubusercontent.com/64102831/222473196-7f73839b-e9aa-40d9-a231-2164d7473b88.PNG)
+
+
+# 설명
 <div class="tt_article_useless_p_margin contents_style"><figure class="imageblock alignCenter" data-ke-mobilestyle="widthOrigin" data-origin-width="1440" data-origin-height="620"><span data-url="https://blog.kakaocdn.net/dn/cb2wUn/btrRnldy9rd/MFtx4nByuKTM3EbBAEObn1/img.png" data-lightbox="lightbox" data-alt=" 앱 구동 사진 "><img src="https://blog.kakaocdn.net/dn/cb2wUn/btrRnldy9rd/MFtx4nByuKTM3EbBAEObn1/img.png" srcset="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fcb2wUn%2FbtrRnldy9rd%2FMFtx4nByuKTM3EbBAEObn1%2Fimg.png" onerror="this.onerror=null; this.src='//t1.daumcdn.net/tistory_admin/static/images/no-image-v1.png'; this.srcset='//t1.daumcdn.net/tistory_admin/static/images/no-image-v1.png';" data-origin-width="1440" data-origin-height="620"></span>
 </figure>
   
@@ -46,19 +69,3 @@
 <p data-ke-size="size16" style="text-align: left;"> </p></div>
 
 
-
-![슬라이드1](https://user-images.githubusercontent.com/64102831/222473138-ce54d9bf-328b-48ee-b603-6d496e0bbe03.PNG)
-![슬라이드2](https://user-images.githubusercontent.com/64102831/222473142-29bc4000-baa1-4430-94c4-df5cbdc099cb.PNG)
-![슬라이드3](https://user-images.githubusercontent.com/64102831/222473148-6266b9ad-ad44-43ad-b9ac-b2e8ae786e53.PNG)
-![슬라이드4](https://user-images.githubusercontent.com/64102831/222473152-1b37f45d-3c19-49ca-a991-f22a5930e5ad.PNG)
-![슬라이드5](https://user-images.githubusercontent.com/64102831/222473158-5cf494bc-3b5f-4f52-adbd-eba45ebc06e4.PNG)
-![슬라이드6](https://user-images.githubusercontent.com/64102831/222473161-e5b84b22-ad93-4795-92ba-142d5c813199.PNG)
-![슬라이드7](https://user-images.githubusercontent.com/64102831/222473162-f0629e37-bfd4-424a-b603-ac0535b5385d.PNG)
-![슬라이드8](https://user-images.githubusercontent.com/64102831/222473165-f7eb5d5b-fdea-4a21-8812-c67772c3a571.PNG)
-![슬라이드9](https://user-images.githubusercontent.com/64102831/222473168-2f9debc7-68bf-4d12-875d-100610b6ba3d.PNG)
-![슬라이드10](https://user-images.githubusercontent.com/64102831/222473174-8a8fae5d-1fdb-4638-8cbc-94f33570fc5a.PNG)
-![슬라이드11](https://user-images.githubusercontent.com/64102831/222473176-8721c8bc-7c98-4c2b-a473-69d0fb327975.PNG)
-![슬라이드12](https://user-images.githubusercontent.com/64102831/222473180-f8fbee58-c6aa-41ea-bccb-8ec0bd46c7a8.PNG)
-![슬라이드13](https://user-images.githubusercontent.com/64102831/222473186-a171b39d-2f67-42a6-93bd-417d5281466f.PNG)
-![슬라이드14](https://user-images.githubusercontent.com/64102831/222473192-80b95b68-f4d1-41e2-abcf-c08538c949d3.PNG)
-![슬라이드15](https://user-images.githubusercontent.com/64102831/222473196-7f73839b-e9aa-40d9-a231-2164d7473b88.PNG)
